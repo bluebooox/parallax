@@ -6,21 +6,41 @@
 	<title></title>
 	<script type="text/javascript">
 		$(function(){
-				var li01Pos = ($("#icon01").offset());
-				var li02Pos = ($("#icon02").offset());
-				var li03Pos = ($("#icon03").offset());
-				var li04Pos = ($("#icon04").offset());
+				var li01Pos = ($(".icon01").offset());
+				var li02Pos = ($(".icon02").offset());
+				var li03Pos = ($(".icon03").offset());
+				var li04Pos = ($(".icon04").offset());
+				var contPos = ($("#contents_02").offset());
+				
 	$(window).scroll(function(){
+		//var y = $("div#contents_02").scrollTop();
+		if ( contPos.top == "500" ){
 		var y = $(this).scrollTop();
-		$("#icon01").css("top",li01Pos.top + y / 5);
-		$("#icon02").css("top",li02Pos.top + y / 5).css("left",li02Pos.left + y / 13);
-		$("#icon03").css("top",li03Pos.top + y / 5).css("left",li03Pos.left + y / 5);
-		$("#icon04").css("left",li04Pos.left + y / 5);
+		$(".icon01").css("top",li01Pos.top + y / 5);
+		$(".icon02").css("top",li02Pos.top + y / 8).css("left",li02Pos.left + y / 3);
+		$(".icon03").css("top",li03Pos.top + y / 3).css("left",li03Pos.left + y / 2);
+		$(".icon04").css("left",li04Pos.left + y / 8);
+		}
 	});
 });
 	</script>
+	<style type="text/css" media="screen">
+		#contents_01{height: 500px;}
+		#contents_02{height: 500px;}
+		#contents_03{height: 500px;}
+		.icon01{position:relative; left:0;}
+		.icon02{position:relative; left:20;}
+		.icon03{position:relative; left:40;}
+		.icon04{position:relative; left:60;}
+	</style>
 </head>
 <body>
-	
+<div id="contents_01">
+</div>
+<div id="contents_02">
+<span class="icon01">/</span><span class="icon02">/</span><span class="icon03">/</span><span class="icon04">/</span>
+</div>
+<div id="contents_03">
+</div>
 </body>
 </html>
