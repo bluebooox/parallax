@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html lang="ja-JP">
+<head>
+	<meta charset="UTF-8">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<title></title>
+	<script type="text/javascript">
+		$(function(){
+				var li01Pos = ($("#icon01").offset());
+				var li02Pos = ($("#icon02").offset());
+				var li03Pos = ($("#icon03").offset());
+				var li04Pos = ($("#icon04").offset());
+	$(window).scroll(function(){
+		var y = $(this).scrollTop();
+		$("#icon01").css("top",li01Pos.top + y / 5);
+		$("#icon02").css("top",li02Pos.top + y / 5).css("left",li02Pos.left + y / 13);
+		$("#icon03").css("top",li03Pos.top + y / 5).css("left",li03Pos.left + y / 5);
+		$("#icon04").css("left",li04Pos.left + y / 5);
+	});
+});
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
