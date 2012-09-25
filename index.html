@@ -31,13 +31,11 @@
 				var li03Pos = ($(".icon03").offset());
 				var li04Pos = ($(".icon04").offset());
 				var contPos = ($("#contents_02").offset());
-	
-	if ( target_top >= contPos.top ) {
 	$(window).scroll(function(){
     
 		//var y = $("div#contents_02").scrollTop();
 		//if( target_top >= 500 ){
-		var y = $(this).scrollTop();
+		if ( target_top >= contPos.top ) { var y = $(this).scrollTop();}
 		//alert(y)
 		//var y = target_top;
 		$(".icon01").css("top",li01Pos.top + y / 5);
@@ -46,11 +44,11 @@
 		$(".icon04").css("left",li04Pos.left + y / 8);
 		//}
 	});
-	}
+	//}
 });
 	</script>
 	<style type="text/css" media="screen">
-		#contents_01{height: 700px;}
+		#contents_01{height: 500px;}
 		#contents_02{height: 700px;}
 		#contents_03{height: 1000px;}
 		.icon01{position:relative; }
