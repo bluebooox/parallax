@@ -7,51 +7,35 @@
 	<script type="text/javascript">
 	$(function(){
 	
-	var scrollPosition = function(){ 
-        var x1 = document.documentElement.scrollLeft; 
-        var x2 = document.body.scrollLeft; 
-        if(x1&x2){x = x1}else{x = x2} 
-     
-        var y1 = document.documentElement.scrollTop; 
-        var y2 = document.body.scrollTop; 
-        if(y1&y2){y = y1}else{y = y2} 
-     
-        return{ 
-            x : x, 
-            y : y 
-        }; 
-     
-    };
-    
-    var target_left = scrollPosition().x;
-    var target_top = scrollPosition().y;
-	
 				var li01Pos = ($(".icon01").offset());
 				var li02Pos = ($(".icon02").offset());
 				var li03Pos = ($(".icon03").offset());
 				var li04Pos = ($(".icon04").offset());
 				var contPos = ($("#contents_02").offset());
+				var wh = $('#contents_01').height();
+				var dh = $(document).height();
+				
+				//alert(li01Pos.top)
+		
 	$(window).scroll(function(){
-    
-		//var y = $("div#contents_02").scrollTop();
-		//if( target_top >= 500 ){
-		if ( target_top >= contPos.top ) { var y = $(this).scrollTop();}
-		//alert(y)
-		//var y = target_top;
-		$(".icon01").css("top",li01Pos.top + y / 5);
-		$(".icon02").css("top",li02Pos.top + y / 8).css("left",li02Pos.left + y / 3);
-		$(".icon03").css("top",li03Pos.top + y / 3).css("left",li03Pos.left + y / 2);
-		$(".icon04").css("left",li04Pos.left + y / 8);
-		//}
+	
+		var ScrTop = $(document).scrollTop();
+		//$('#contents_01').val(ScrTop);
+		var y = ScrTop;
+		if ( ScrTop >= wh ){
+		$(".icon01").css("top",li02Pos.top + y / 2 );
+		$(".icon02").css("top",li02Pos.top + y / 2).css("left",li02Pos.left + y / 3);
+		$(".icon03").css("top",li03Pos.top + y / 2).css("left",li03Pos.left + y / 2);
+		$(".icon04").css("left",li04Pos.left + y / 3);
+		}
 	});
-	//}
 });
 	</script>
 	<style type="text/css" media="screen">
 		#contents_01{height: 500px;}
 		#contents_02{height: 700px;}
 		#contents_03{height: 1000px;}
-		.icon01{position:relative; }
+		.icon01{position:absolute; top:500px; }
 		.icon02{position:relative; }
 		.icon03{position:relative; }
 		.icon04{position:relative; vertical-align: top;}
