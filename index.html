@@ -23,7 +23,7 @@
 		//$('#contents_01').val(ScrTop);
 		var y = ScrTop;
 		if ( ScrTop >= wh ){
-		$(".icon01").css("top",li02Pos.top + y / 2 );
+		$(".icon01").css("top",li02Pos.top + y / Math.sin(2) );
 		$(".icon02").css("top",li02Pos.top + y / 2).css("left",li02Pos.left + y / 3);
 		$(".icon03").css("top",li03Pos.top + y / 2).css("left",li03Pos.left + y / 2);
 		$(".icon04").css("left",li04Pos.left + y / 3);
