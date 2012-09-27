@@ -22,12 +22,15 @@
 		var ScrTop = $(document).scrollTop();
 		//$('#contents_01').val(ScrTop);
 		var y = ScrTop;
+
 		if ( ScrTop >= wh ){
-		$(".icon01").css("top",li02Pos.top + y / Math.sin(2) );
+		$(".icon01").css("top",Math.cos(45 * Math.PI / 100) * y ).css("left", Math.sin(45 * Math.PI / 100) * y);
 		$(".icon02").css("top",li02Pos.top + y / 2).css("left",li02Pos.left + y / 3);
 		$(".icon03").css("top",li03Pos.top + y / 2).css("left",li03Pos.left + y / 2);
 		$(".icon04").css("left",li04Pos.left + y / 3);
-		}
+		} else {
+			$(".icon01").css("top", Math.tan(240 * Math.PI / 100) * y ).css("left", Math.sin(45 * Math.PI / 100) * y);
+		};
 	});
 });
 	</script>
@@ -35,7 +38,7 @@
 		#contents_01{height: 500px;}
 		#contents_02{height: 700px;}
 		#contents_03{height: 1000px;}
-		.icon01{position:absolute; top:500px; }
+		.icon01{position:absolute; top:0; left: 0; }
 		.icon02{position:relative; }
 		.icon03{position:relative; }
 		.icon04{position:relative; vertical-align: top;}
