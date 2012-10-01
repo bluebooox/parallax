@@ -1,0 +1,329 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"lef",
+				"left"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "\n<!DOCTYPE HTML>\n<html lang=\"ja-JP\">\n<head>\n	<meta charset=\"UTF-8\">\n	<script type=\"text/javascript\" src=\"jquery.min.js\"></script>\n	<title></title>\n	<script type=\"text/javascript\">\n	$(function(){\n	\n				var li01Pos = ($(\".icon01\").offset());\n				var li02Pos = ($(\".icon02\").offset());\n				var li03Pos = ($(\".icon03\").offset());\n				var li04Pos = ($(\".icon04\").offset());\n				var contPos = ($(\"#contents_02\").offset());\n				var wh = $('#contents_01').height();\n				var dh = $(document).height();\n				\n				//alert(li01Pos.top)\n		\n	$(window).scroll(function(){\n	\n		var ScrTop = $(document).scrollTop();\n		//$('#contents_01').val(ScrTop);\n		var y = ScrTop;\n\n		if ( ScrTop >= wh ){\n		$(\".icon01\").css(\"top\",Math.cos(45 * Math.PI / 100) * y ).css(\"left\", Math.sin(45 * Math.PI / 100) * y);\n		$(\".icon02\").css(\"top\",li02Pos.top + y / 2).css(\"left\",li02Pos.left + y / 3);\n		$(\".icon03\").css(\"top\",li03Pos.top + y / 2).css(\"left\",li03Pos.left + y / 2);\n		$(\".icon04\").css(\"left\",li04Pos.left + y / 3);\n		} else {\n			$(\".icon01\").css(\"top\", Math.tan(240 * Math.PI / 100) * y ).css(\"left\", Math.sin(45 * Math.PI / 100) * y);\n		};\n		\n	});\n});\n	</script>\n	<style type=\"text/css\" media=\"screen\">\n		#contents_01{height: 500px;}\n		#contents_02{height: 700px;}\n		#contents_03{height: 1000px;}\n		.icon01{position:absolute; top:0; left: 0; }\n		.icon02{position:relative; }\n		.icon03{position:relative; }\n		.icon04{position:relative; vertical-align: top;}\n	</style>\n</head>\n<body>\n<div id=\"contents_01\">\n</div>\n<div id=\"contents_02\">\n<span class=\"icon01\">/</span><span class=\"icon02\">/</span><span class=\"icon03\">/</span><span class=\"icon04\">/</span>\n</div>\n<div id=\"contents_03\">\n</div>\n</body>\n</html>",
+			"file": "index.html",
+			"file_size": 1680,
+			"file_write_time": 1348824164000000,
+			"settings":
+			{
+				"buffer_size": 1681,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/HTML Compressor/Html Compressor.sublime-build",
+	"command_palette":
+	{
+		"height": 47.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"tidy",
+				"Tidy HTML"
+			],
+			[
+				"zenco",
+				"Zen Coding: Split or join tag"
+			],
+			[
+				"zen",
+				"Set Syntax: ZenCoding"
+			],
+			[
+				"html",
+				"HTML2Haml: Convert selection"
+			],
+			[
+				"install package",
+				"Package Control: Install Package"
+			],
+			[
+				"less",
+				"HTML: Encode Special Characters"
+			],
+			[
+				"packages",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 800.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/tanaka_katsumasa/git/parallax/indexx.html",
+		"/Users/tanaka_katsumasa/git/parallax/index.html",
+		"/Users/tanaka_katsumasa/Library/Application Support/Sublime Text 2/Packages/User/SublimeServer.sublime-settings",
+		"/Users/tanaka_katsumasa/Library/Application Support/Sublime Text 2/Packages/User/Git.sublime-settings",
+		"/Users/tanaka_katsumasa/Library/Application Support/Sublime Text 2/Packages/Git/Git.sublime-settings",
+		"/Users/tanaka_katsumasa/Library/Application Support/Sublime Text 2/Packages/sublime-github/GitHub.sublime-settings",
+		"/Users/tanaka_katsumasa/git/webteam/README.txt",
+		"/Users/tanaka_katsumasa/Library/Application Support/Sublime Text 2/Packages/SVN/SVN.sublime-settings",
+		"/Users/tanaka_katsumasa/Library/Application Support/Sublime Text 2/Packages/User/SVN.sublime-settings",
+		"/Users/tanaka_katsumasa/Library/Application Support/Sublime Text 2/Packages/SublimeLinter/README.md",
+		"/Users/tanaka_katsumasa/Library/Application Support/Sublime Text 2/Packages/Tag/Tag Package.sublime-settings",
+		"/Users/tanaka_katsumasa/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/tanaka_katsumasa/git/webteam/htdocs/index2.html",
+		"/Users/tanaka_katsumasa/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/tanaka_katsumasa/Library/Application Support/Sublime Text 2/Packages/User/JSON.sublime-settings",
+		"/Users/tanaka_katsumasa/Library/Application Support/Sublime Text 2/Packages/ZenCoding/zen-coding.sublime-settings",
+		"/Users/tanaka_katsumasa/Library/Application Support/Sublime Text 2/Packages/ZenCoding/Preferences.sublime-settings",
+		"/Users/tanaka_katsumasa/Library/Application Support/Sublime Text 2/Packages/User/zen-coding.sublime-settings",
+		"/Users/tanaka_katsumasa/Library/Application Support/Sublime Text 2/Packages/User/Package Control.sublime-settings",
+		"/Users/tanaka_katsumasa/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/tanaka_katsumasa/Sites/wdps/sample.html",
+		"/Users/tanaka_katsumasa/Sites/wdps/sample.pl",
+		"/Users/tanaka_katsumasa/Documents/作業エリア/ブリヂストン2012/svn/htdocs/csr/index.html"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"4",
+			"en",
+			"5"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 1681,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1320,
+								1320
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"is_xml": false,
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": false,
+							"sublimelinter_mark_style": "outline",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}
