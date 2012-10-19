@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+<link rel="stylesheet" media="screen" href="common/css/base.css" />
+
+<script src="jquery.min.js"></script>
+
+<style type="text/css">
+	.module {
+		background: #ddd;
+		width: 600px;
+		height: 300px;
+		margin: 0 auto 50px;
+		position: relative;
+	}
+	h1 {
+		width: 600px;
+		margin: 0 auto;
+		font-size: 150%;
+	}
+	#img01,#img02,#img03 {
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+</style>
+
+<script type="text/javascript">
+/*
+回る：中心点を(a,b)、半径をr、X軸からの角度をcとすると
+x = a + (r*Math.cos(c));
+y = b + (r*Math.sin(c));
+となります。cを動的に変更すれば回転します。
+*/
+
+var rotate = function(){
+	var a = 300; //left: 0;top: 0;なので右起点での中心地
+	var b = 150; //left: 0;top: 0;なので上起点での中心地
+	var r = 100; //半径
+	c = 0;
+	
+	setInterval(function(){
+		//0.001を大きな数字にすると動きが早くなります
+		$('#img01').css({
+			left: (a + (r*Math.cos(c*0.01*Math.PI))) + 'px', top: (b + (r*Math.sin(c*0.01*Math.PI))) + 'px'
+		});
+		c++;
+	},1);
+}
+
+/*
+動き続ける：
+sin(θ)が-1から1の値をとることを考えると、300倍して300を足せば0から600の間を行ったりきたりする式になることが分かります。その結果を横方向の動きとします。
+*/
+var move = function(){
+	d = 0;
+	setInterval(function(){
+		//0.001を大きな数字にすると動きが早くなります
+		$('#img02').css({
+			left: 300+(300*Math.sin(c*0.01*Math.PI)) + 'px',
+		});
+		d++;
+	},1);
+}
+
+/*
+蛇行；
+x方向・・・0から600を行き来するように（sinが-1から1を取るので、（動かしたい半分の幅）-（動かしたい半分の幅*sin(θ)）で0から全体の幅を行き来するようになります。
+y方向・・・単純にsin(θ)で上下に行ったりきたりします。
+ */
+
+var curve = function(){
+	 e= 0;
+	setInterval(function(){
+		$('#img03').css({
+			left: 300 - 300*Math.sin(0.001*e*Math.PI) + 'px',
+			top: 100*(Math.sin(0.01*e*Math.PI)) + 'px'
+		});
+		e++;
+	},1);
+}
+
+$(function(){
+	rotate();
+	move();
+	curve();
+});
+
+</script>
+
+</head>
+<body>
+
+<h1>回り続ける</h1>
+<div class="module">
+	<span id="img01">●</span>
+</div>
+
+<h1>行ったり来たり</h1>
+<div class="module">
+	<span id="img02">▲</span>
+</div>
+
+<h1>蛇行</h1>
+<div class="module">
+	<span id="img03">□</span>
+</div>
+
+
+</body>
+</html>
+
+
+

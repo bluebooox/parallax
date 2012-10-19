@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="./jquery.min.js" charset="UTF8"></script>
+	<script type="text/javascript">
+		jQuery(function($){	
+			$(window).load(function(){
+			var ww = $(window).width();
+
+			var n = $(".box img").length;
+
+			if (ww <= 480){
+				$("body").find("img").css({
+					width:"80%"//,height:"80%"
+								 // WebkitTransform: 'scale(0.8)',
+								 // MozTransform: 'scale(0.8)',
+								 // OTransform: 'scale(0.8)',
+								 // msTransform: 'scale(0.8)'
+				});
+			}
+
+			$(window).resize(function(){
+				var sww = $(window).width();
+
+			for (var i=0; i < n; i++) {
+				// $("p").html(sww);
+				var isww = $("img").eq(i).width();
+				var iswh = $("img").eq(i).height();				
+
+				if (sww <= 481){
+
+					var sps = ( sww / isww ) * 100;
+					var spw = ( sps / 100 ) * isww;
+					var sph = ( sps / 100 ) * iswh;
+
+					// if ( sps <= 80 ){
+						$("body").find("img").eq(i).css({
+								 width: spw + 'px', height: sph + 'px'
+								 // WebkitTransform: 'scale(0.8)',
+								 // MozTransform: 'scale(0.8)',
+								 // OTransform: 'scale(0.8)',
+								 // msTransform: 'scale(0.8)'
+						});
+					// }
+
+				}else {
+
+					$("body").find("img").eq(i).css({
+						 width:"",height:""
+						// WebkitTransform: 'scale(1)'
+					});
+
+				}
+
+			}
+
+			});
+		});
+		});
+
+// jQuery(function($){
+// 			var nn = $("img").length;
+// 			var str = "_off.";
+// 			// alert(nn)
+// 			for (var i=0; i < nn; i++) {
+// 				if( $("img").eq(i).matches(".*" + str + ".*") ){
+
+
+
+// 				}
+// 			}
+// });
+	</script>
+	<style type="text/css">
+	body{padding: 0; margin: 0;}
+
+		.box{
+			margin: 0 auto;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="box"><img src="./main.jpg" height="200" width="500" alt=""></div>
+	<div class="box"><img src="./main_off.jpg" height="200" width="200" alt=""></div>
+	<div class="box"><img src="./main.jpg" height="200" width="400" alt=""></div>
+	<div class="box"><img src="./main_off.jpg" height="200" width="300" alt=""></div>
+	<div class="box"><img src="./main.jpg" height="200" width="100" alt=""></div>
+	<div class="box"><img src="./main_off.jpg" height="200" width="500" alt=""></div>
+	<div class="box"><img src="./main.jpg" height="200" width="250" alt=""></div>
+	<div class="box"><img src="./main.jpg" height="200" width="350" alt=""></div>
+	<div class="box"><img src="./main.jpg" height="200" width="450" alt=""></div>
+	<div class="box"><img src="./main_off.jpg" height="200" width="300" alt=""></div>
+	<div class="box"><img src="./main.jpg" height="200" width="320" alt=""></div>
+	<div class="box"><img src="./main.jpg" height="200" width="480" alt=""></div>
+	<div class="box"><img src="./main_off.jpg" height="200" width="320" alt=""></div>
+	<div class="box"><img src="./main_off.jpg" height="200" width="50" alt=""></div>
+</body>
+</html>
