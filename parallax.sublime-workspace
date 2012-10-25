@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"para",
+				"parallax"
+			],
+			[
+				"fix",
+				"fixed"
+			],
+			[
+				"ab",
+				"absolute"
+			],
+			[
 				"lef",
 				"left"
 			]
@@ -12,13 +24,22 @@
 	"buffers":
 	[
 		{
-			"contents": "\n<!DOCTYPE HTML>\n<html lang=\"ja-JP\">\n<head>\n	<meta charset=\"UTF-8\">\n	<script type=\"text/javascript\" src=\"jquery.min.js\"></script>\n	<title></title>\n	<script type=\"text/javascript\">\n	$(function(){\n	\n				var li01Pos = ($(\".icon01\").offset());\n				var li02Pos = ($(\".icon02\").offset());\n				var li03Pos = ($(\".icon03\").offset());\n				var li04Pos = ($(\".icon04\").offset());\n				var contPos = ($(\"#contents_02\").offset());\n				var wh = $('#contents_01').height();\n				var dh = $(document).height();\n				\n				//alert(li01Pos.top)\n		\n	$(window).scroll(function(){\n	\n		var ScrTop = $(document).scrollTop();\n		//$('#contents_01').val(ScrTop);\n		var y = ScrTop;\n\n		if ( ScrTop >= wh ){\n		$(\".icon01\").css(\"top\",Math.cos(45 * Math.PI / 100) * y ).css(\"left\", Math.sin(45 * Math.PI / 100) * y);\n		$(\".icon02\").css(\"top\",li02Pos.top + y / 2).css(\"left\",li02Pos.left + y / 3);\n		$(\".icon03\").css(\"top\",li03Pos.top + y / 2).css(\"left\",li03Pos.left + y / 2);\n		$(\".icon04\").css(\"left\",li04Pos.left + y / 3);\n		} else {\n			$(\".icon01\").css(\"top\", Math.tan(240 * Math.PI / 100) * y ).css(\"left\", Math.sin(45 * Math.PI / 100) * y);\n		};\n		\n	});\n});\n	</script>\n	<style type=\"text/css\" media=\"screen\">\n		#contents_01{height: 500px;}\n		#contents_02{height: 700px;}\n		#contents_03{height: 1000px;}\n		.icon01{position:absolute; top:0; left: 0; }\n		.icon02{position:relative; }\n		.icon03{position:relative; }\n		.icon04{position:relative; vertical-align: top;}\n	</style>\n</head>\n<body>\n<div id=\"contents_01\">\n</div>\n<div id=\"contents_02\">\n<span class=\"icon01\">/</span><span class=\"icon02\">/</span><span class=\"icon03\">/</span><span class=\"icon04\">/</span>\n</div>\n<div id=\"contents_03\">\n</div>\n</body>\n</html>",
-			"file": "index.html",
-			"file_size": 1680,
-			"file_write_time": 1348824164000000,
+			"contents": "html5\n",
 			"settings":
 			{
-				"buffer_size": 1681,
+				"buffer_size": 6,
+				"line_ending": "Unix",
+				"name": "html5"
+			}
+		},
+		{
+			"contents": "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"UTF-8\" />\n<title></title>\n<link rel=\"stylesheet\" media=\"screen\" href=\"common/css/base.css\" />\n\n<script src=\"jquery.min.js\"></script>\n\n<style type=\"text/css\">\n	.module {\n		background: #ddd;\n		width: 600px;\n		height: 300px;\n		margin: 0 auto 50px;\n		position: relative;\n	}\n	h1 {\n		width: 600px;\n		margin: 0 auto;\n		font-size: 150%;\n	}\n	#img01,#img02,#img03 {\n		position: absolute;\n		left: 0;\n		top: 0;\n	}\n</style>\n\n<script type=\"text/javascript\">\n/*\n回る：中心点を(a,b)、半径をr、X軸からの角度をcとすると\nx = a + (r*Math.cos(c));\ny = b + (r*Math.sin(c));\nとなります。cを動的に変更すれば回転します。\n*/\n\nvar rotate = function(){\n	var a = 300; //left: 0;top: 0;なので右起点での中心地\n	var b = 150; //left: 0;top: 0;なので上起点での中心地\n	var r = 100; //半径\n	c = 0;\n	\n	setInterval(function(){\n		//0.001を大きな数字にすると動きが早くなります\n		$('#img01').css({\n			left: (a + (r*Math.cos(c*0.01*Math.PI))) + 'px', top: (b + (r*Math.sin(c*0.01*Math.PI))) + 'px'\n		});\n		c++;\n	},1);\n}\n\n/*\n動き続ける：\nsin(θ)が-1から1の値をとることを考えると、300倍して300を足せば0から600の間を行ったりきたりする式になることが分かります。その結果を横方向の動きとします。\n*/\nvar move = function(){\n	d = 0;\n	setInterval(function(){\n		//0.001を大きな数字にすると動きが早くなります\n		$('#img02').css({\n			left: 300+(300*Math.sin(c*0.01*Math.PI)) + 'px',\n		});\n		d++;\n	},1);\n}\n\n/*\n蛇行；\nx方向・・・0から600を行き来するように（sinが-1から1を取るので、（動かしたい半分の幅）-（動かしたい半分の幅*sin(θ)）で0から全体の幅を行き来するようになります。\ny方向・・・単純にsin(θ)で上下に行ったりきたりします。\n */\n\nvar curve = function(){\n	 e= 0;\n	setInterval(function(){\n		$('#img03').css({\n			left: 300 - 300*Math.sin(0.001*e*Math.PI) + 'px',\n			top: 100*(Math.sin(0.01*e*Math.PI)) + 'px'\n		});\n		e++;\n	},1);\n}\n\n$(function(){\n	rotate();\n	move();\n	curve();\n});\n\n</script>\n\n</head>\n<body>\n\n<h1>回り続ける</h1>\n<div class=\"module\">\n	<span id=\"img01\">●</span>\n</div>\n\n<h1>行ったり来たり</h1>\n<div class=\"module\">\n	<span id=\"img02\">▲</span>\n</div>\n\n<h1>蛇行</h1>\n<div class=\"module\">\n	<span id=\"img03\">□</span>\n</div>\n\n\n</body>\n</html>\n\n\n\n",
+			"file": "palla.html",
+			"file_size": 2439,
+			"file_write_time": 1350459240000000,
+			"settings":
+			{
+				"buffer_size": 1856,
 				"line_ending": "Unix"
 			}
 		}
@@ -26,7 +47,7 @@
 	"build_system": "Packages/HTML Compressor/Html Compressor.sublime-build",
 	"command_palette":
 	{
-		"height": 47.0,
+		"height": 348.0,
 		"selected_items":
 		[
 			[
@@ -83,8 +104,10 @@
 	},
 	"file_history":
 	[
-		"/Users/tanaka_katsumasa/git/parallax/indexx.html",
 		"/Users/tanaka_katsumasa/git/parallax/index.html",
+		"/Users/tanaka_katsumasa/git/parallax/palla.html",
+		"/Users/tanaka_katsumasa/git/parallax/parallax.sublime-project",
+		"/Users/tanaka_katsumasa/git/parallax/indexx.html",
 		"/Users/tanaka_katsumasa/Library/Application Support/Sublime Text 2/Packages/User/SublimeServer.sublime-settings",
 		"/Users/tanaka_katsumasa/Library/Application Support/Sublime Text 2/Packages/User/Git.sublime-settings",
 		"/Users/tanaka_katsumasa/Library/Application Support/Sublime Text 2/Packages/Git/Git.sublime-settings",
@@ -123,6 +146,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"html5",
+			"div",
+			"contents_02",
+			"contents_01",
 			"4",
 			"en",
 			"5"
@@ -148,18 +175,46 @@
 			[
 				{
 					"buffer": 0,
-					"file": "index.html",
 					"settings":
 					{
-						"buffer_size": 1681,
+						"buffer_size": 6,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1320,
-								1320
+								5,
+								5
+							]
+						],
+						"settings":
+						{
+							"auto_name": "html5",
+							"incomplete_sync": null,
+							"is_xml": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "palla.html",
+					"settings":
+					{
+						"buffer_size": 1856,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1835,
+								1835
 							]
 						],
 						"settings":
@@ -211,6 +266,7 @@
 							"gjslint_options":
 							[
 							],
+							"incomplete_sync": null,
 							"is_xml": false,
 							"javascript_linter": "jshint",
 							"jshint_options":
@@ -222,6 +278,7 @@
 								"trailing": true,
 								"wsh": true
 							},
+							"origin_encoding": "UTF-8",
 							"pep8": true,
 							"pep8_ignore":
 							[
@@ -232,6 +289,7 @@
 							[
 							],
 							"pyflakes_ignore_import_*": true,
+							"remote_loading": false,
 							"sublimelinter": true,
 							"sublimelinter_delay": 2.0,
 							"sublimelinter_disable":
@@ -248,15 +306,17 @@
 							"sublimelinter_popup_errors_on_save": false,
 							"sublimelinter_syntax_map":
 							{
+								"C++": "c",
 								"Python Django": "python",
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
+							"synced": false,
 							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1052.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -298,6 +358,10 @@
 	"output.exec":
 	{
 		"height": 100.0
+	},
+	"output.sftp":
+	{
+		"height": 0.0
 	},
 	"replace":
 	{

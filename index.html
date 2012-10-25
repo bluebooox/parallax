@@ -6,52 +6,76 @@
 	<title></title>
 	<script type="text/javascript">
 	$(function(){
-	
 				var li01Pos = ($(".icon01").offset());
 				var li02Pos = ($(".icon02").offset());
 				var li03Pos = ($(".icon03").offset());
 				var li04Pos = ($(".icon04").offset());
 				var contPos = ($("#contents_02").offset());
-				var wh = $('#contents_01').height();
+				var wh = $('#contents_02').height();
 				var dh = $(document).height();
 				
 				//alert(li01Pos.top)
-		
+					var aa = li03Pos.top; //left: 0;top: 0;なので右起点での中心地
+					var bb = li03Pos.top;
+					var a = li04Pos.top; //left: 0;top: 0;なので右起点での中心地
+					var b = li04Pos.top; //left: 0;top: 0;なので上起点での中心地
+					var r = 500; //半径
+					c = 0;
+					var s = $(document).scrollTop();
+
+	$(".icon03").css({left: (aa + (r*Math.cos(s*0.01*Math.PI))) + 'px', top: (bb - (r*Math.sin(s*0.01*Math.PI))) + 'px'});
+	$(".icon04").css({left: (a + (r*Math.cos(s*0.01*Math.PI))) + 'px', top: (b + (r*Math.sin(s*0.01*Math.PI))) + 'px'});
+
 	$(window).scroll(function(){
 	
 		var ScrTop = $(document).scrollTop();
 		//$('#contents_01').val(ScrTop);
 		var y = ScrTop;
 
-		if ( ScrTop >= wh ){
-		$(".icon01").css("top",Math.cos(45 * Math.PI / 100) * y ).css("left", Math.sin(45 * Math.PI / 100) * y);
-		$(".icon02").css("top",li02Pos.top + y / 2).css("left",li02Pos.left + y / 3);
-		$(".icon03").css("top",li03Pos.top + y / 2).css("left",li03Pos.left + y / 2);
-		$(".icon04").css("left",li04Pos.left + y / 3);
-		} else {
-			$(".icon01").css("top", Math.tan(240 * Math.PI / 100) * y ).css("left", Math.sin(45 * Math.PI / 100) * y);
-		};
-		
+		// if ( y >= contPos.top ){
+		// $(".icon01").css("top",Math.cos(5 * Math.PI / 100) * y ).css("left", Math.sin(5 * Math.PI / 100) * y);
+		// $(".icon02").css("top",li02Pos.top + y / 2).css("left",li02Pos.left + y / 3);
+		$(".icon03").css({left: (aa + (r*Math.cos(y*0.001*Math.PI))) + 'px', top: (bb - (r*Math.sin(y*0.001*Math.PI))) + 'px'});
+		$(".icon04").css({left: (a + (r*Math.cos(y*0.0002*Math.PI))) + 'px', top: (b + (r*Math.sin(y*0.0002*Math.PI))) + 'px'});
+		// }
 	});
 });
+jQuery(function($){	
+	$(".top").click(function(){
+		var dist = $("#top").offset();
+		var dist = dist.top;
+
+		$('html,body').animate({ scrollTop:dist }, 'slow','swing');
+
+		return false;
+	});
+});
+
+
 	</script>
+	
 	<style type="text/css" media="screen">
 		#contents_01{height: 500px;}
 		#contents_02{height: 700px;}
-		#contents_03{height: 1000px;}
+		#contents_03{height: 5000px;}
 		.icon01{position:absolute; top:0; left: 0; }
 		.icon02{position:relative; }
-		.icon03{position:relative; }
-		.icon04{position:relative; vertical-align: top;}
+		.icon03{position:fixed; }
+		.icon04{position:fixed; top:150px;}
 	</style>
 </head>
-<body>
-<div id="contents_01">
-</div>
+<body><div id="top"></div>
+<div id="contents_01"><div class="icon04">あああああ</div></div>
+<span class="icon03">3</span>
 <div id="contents_02">
-<span class="icon01">/</span><span class="icon02">/</span><span class="icon03">/</span><span class="icon04">/</span>
+<span class="icon01">"/</span>
+<span class="icon02">"/</span>
+
+<!-- <span class="icon04">/</span> -->
 </div>
 <div id="contents_03">
+	<img src="" alt="">
 </div>
+<a href="#top" class="top">トップへ</a>
 </body>
 </html>
